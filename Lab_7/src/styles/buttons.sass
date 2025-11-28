@@ -1,0 +1,51 @@
+@use "main_style"
+
+$button_width: 10%
+
+%buttons-container-template
+    @include main_style.everything_center()
+    position: relative
+    right: 0
+    display: flex
+    gap: 10px
+    height: 50px
+
+.album-buttons
+    @extend %buttons-container-template
+    top: calc(85%)
+    left: calc(39%)
+
+.dialog-buttons
+    @extend %buttons-container-template
+    top: 60%
+    left: calc(50% - $button_width)
+
+    button
+        width: $button_width
+        h2
+            margin: 0px
+
+.close-button
+    @extend %buttons-container-template
+    position: absolute
+    top: 15%
+    left: calc(40% + 500px)
+    z-index: 2    
+
+button
+    background-color: main_style.$main_color
+    color: main_style.$text_color
+    border: none
+    padding: 12px 24px
+    font-size: 16px
+    border-radius: main_style.$standart_box_radius
+    cursor: pointer
+    transition: all 0.3s ease
+    box-shadow: main_style.$standart_box_shadow
+    
+    &:hover 
+        background-color: main_style.$main_color
+        transform: scale(1.05)
+
+    &:active 
+        transform: scale(0.98)

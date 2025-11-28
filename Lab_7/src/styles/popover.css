@@ -1,0 +1,9 @@
+.popover {
+  position: fixed;
+  width: 300px;
+  height: auto;
+  background: fixed;
+  margin: auto;
+  background-color: #ffffff;
+  z-index: 1;
+}/*# sourceMappingURL=popover.css.map */
