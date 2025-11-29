@@ -1,25 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import EnlargedPicture from './EnlargedPicture.vue'
-
-const images_length = 15
-const listOfNames = [
-  'Mak',
-  'Sebastian Schuster',
-  'Yuri Krupenin',
-  'Tomasz Brengos',
-  'Alissa Schilling',
-  'Shana Van Roosbroek',
-  'Evgeni Tcherkasski',
-  'Jonas Degener',
-  'Leongsan',
-  'Jonny Gios',
-  'Christian Cueni',
-  'Emma Swoboda',
-  'Leongsan',
-  'Clay Banks',
-  'Louis Droege',
-]
+import { images_length, listOfNames } from '@/store/AlbumConstants'
 
 function setUpImages() {
   const images = []
@@ -35,6 +17,7 @@ function setUpImages() {
 </script>
 
 <template>
+  <RouterView />
   <div class="image-row">
     <RouterLink
       class="image-block"

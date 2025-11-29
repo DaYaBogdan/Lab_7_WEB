@@ -1,33 +1,14 @@
 <script setup></script>
 
 <template>
-  <div>
-    <h1 style="text-align: center">
-      «Исследование возможностей ускорения разработки клиентских приложений с использованием SASS»
-    </h1>
-    <table style="width: 100%; text-align: center; margin-top: 30px">
-      <tr>
-        <td rowspan="3" colspan="2">
-          <img src="../images/another/title_photo.jpg" />
-        </td>
+  <div style="display: flex; flex-direction: column; align-items: center">
+    <img src="../images/another/title_photo.jpg" style="width: 20%; height: 20%" />
 
-        <td colspan="3">
-          <h1>Лабораторная работа #5</h1>
-        </td>
+    <h1>Лабораторная работа #7</h1>
 
-        <td rowspan="3" colspan="2">
-          <img src="../images/another/second_title.jpg" />
-        </td>
-      </tr>
+    <h1>ФИО: Смирнов Богдан Викторович</h1>
 
-      <tr colspan="2">
-        <td><h1>ФИО: Смирнов Богдан Викторович</h1></td>
-      </tr>
-
-      <tr colspan="2">
-        <td><h1>Группа: ИС/б-23-1-о</h1></td>
-      </tr>
-    </table>
+    <h1>Группа: ИС/б-23-1-о</h1>
   </div>
 </template>
 

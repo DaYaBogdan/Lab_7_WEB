@@ -11,38 +11,42 @@ const formData = ref({
   phone: '',
 })
 
+const validate = ref({
+  catches: false,
+})
+
 const sexOptions = {
   M: 'Male',
   F: 'Female',
 }
 
 const validateFields = computed(() => {
-  const e = []
+  const errors = []
 
-  if (!formData.value.name) e.push({ field: 'name', message: 'Введите имя!' })
+  if (!validate.value.catches) {
+    return errors
+  }
 
-  if (!formData.value.surname) e.push({ field: 'surname', message: 'Введите фамилию!' })
+  if (!formData.value.name) errors.push({ field: 'name', message: 'Введите имя!' })
 
-  if (!(formData.value.age <= 0)) e.push({ field: 'age', message: 'Укажите корректный возраст!' })
+  if (!formData.value.surname) errors.push({ field: 'surname', message: 'Введите фамилию!' })
 
-  if (!formData.value.email) e.push({ field: 'email', message: 'Укажите email!' })
+  if (!(formData.value.age <= 0))
+    errors.push({ field: 'age', message: 'Укажите корректный возраст!' })
 
-  if (!formData.value.phone) e.push({ field: 'phone', message: 'Укажите телефон!' })
+  if (!formData.value.email) errors.push({ field: 'email', message: 'Укажите email!' })
 
-  return e
+  if (!formData.value.phone) errors.push({ field: 'phone', message: 'Укажите телефон!' })
+
+  return errors
 })
+
+function validateForm() {
+  validate.value.catches = true
+}
 
 function hasError(fieldName) {
   return validateFields.value.some((error) => error.field === fieldName)
-}
-
-function getError(fieldName) {
-  const error = validateFields.value.find((error) => error.field === fieldName)
-  return error ? error.message : ''
-}
-
-function validateForm() {
-  if (validateFields.value.length > 0) alert('Ошибки в форме')
 }
 
 function resetForm() {
@@ -79,7 +83,7 @@ function resetForm() {
 
           <div>
             <label><h2>Выберите пол:</h2></label>
-            <div style="display: flex; gap: 2em; flex-wrap: wrap; margin: 2.3em 0px">
+            <div style="display: flex; gap: 2em; flex-wrap: wrap">
               <h2 v-for="(label, key) in sexOptions" :key="key" style="display: flex; gap: 0.5em">
                 <input type="radio" v-model="formData.sex" :value="key" />
                 <span>{{ label }}</span>
@@ -116,7 +120,7 @@ function resetForm() {
           <div class="form-group">
             <label><h2>Ваш телефон:</h2></label>
             <input type="text" v-model="formData.phone" placeholder="+7/+3..." />
-            <label style="color: red">Ошибка в номере телефона</label>
+            <label style="color: red" v-show="hasError('phone')">Ошибка в номере телефона</label>
           </div>
         </div>
 
@@ -130,6 +134,6 @@ function resetForm() {
 </template>
 
 <style scoped>
-/* @import url('../styles/buttons.css');
-@import url('../styles/inputs.css'); */
+@import url('../styles/buttons.css');
+@import url('../styles/inputs.css');
 </style>

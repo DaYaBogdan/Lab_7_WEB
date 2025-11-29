@@ -6,6 +6,7 @@ import Album from '@/components/Album.vue'
 import Contacts from '@/components/Contacts.vue'
 import NotFound from '@/components/NotFound.vue'
 import EnlargedPicture from '@/components/EnlargedPicture.vue'
+import History from '@/components/History.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,17 +30,24 @@ const router = createRouter({
       path: '/Album',
       name: 'Album',
       component: Album,
-    },
-    {
-      path: '/Album/:id',
-      name: 'EnlargedPicture',
-      component: EnlargedPicture,
-      props: true,
+      children: [
+        {
+          path: ':id',
+          name: 'EnlargedPicture',
+          component: EnlargedPicture,
+          props: true,
+        },
+      ],
     },
     {
       path: '/Contacts',
       name: 'Contacts',
       component: Contacts,
+    },
+    {
+      path: '/History',
+      name: 'History',
+      component: History,
     },
     {
       path: '/:catchAll(.*)',

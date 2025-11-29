@@ -1,12 +1,20 @@
 <script>
+import { images_length } from '@/store/AlbumConstants'
+
 export default {
   props: ['id'],
   methods: {
     redirect() {
-      this.$router.go(-1)
+      this.$router.push({ name: 'Album' })
     },
-    back() {},
-    next() {},
+    back() {
+      const newId = this.id == 1 ? images_length : Number(this.id) - 1
+      this.$router.push({ name: 'EnlargedPicture', params: { id: newId } })
+    },
+    next() {
+      const newId = this.id == images_length ? 1 : Number(this.id) + 1
+      this.$router.push({ name: 'EnlargedPicture', params: { id: newId } })
+    },
   },
 }
 </script>
