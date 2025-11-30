@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import EnlargedPicture from './EnlargedPicture.vue'
 import { images_length, listOfNames } from '@/store/AlbumConstants'
 
 function setUpImages() {
